@@ -48,8 +48,8 @@ const InfoPanel = ({ scenario, gtoStrategy, feedback, stats }: InfoPanelProps) =
         <div className="info-section gto-section">
           <h3>GTO 策略建议</h3>
           <div className="strategy-frequencies">
-            {Object.entries(gtoStrategy).map(([action, freq]) => (
-              freq > 0 && (
+            {Object.entries(gtoStrategy).map(([action, freq]) => 
+              freq > 0 ? (
                 <div key={action} className="frequency-item">
                   <div className="frequency-label">
                     {formatActionName(action as keyof StrategyFrequency)}:
@@ -62,8 +62,8 @@ const InfoPanel = ({ scenario, gtoStrategy, feedback, stats }: InfoPanelProps) =
                     <span className="frequency-value">{Math.round(freq * 100)}%</span>
                   </div>
                 </div>
-              )
-            ))}
+              ) : null
+            )}
           </div>
         </div>
       )}

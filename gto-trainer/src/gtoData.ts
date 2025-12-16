@@ -164,20 +164,24 @@ export function getHandCategory(card1Rank: string, card2Rank: string, suited: bo
   const val2 = getValue(card2Rank);
   const isPair = val1 === val2;
   const highCard = Math.max(val1, val2);
+  const lowCard = Math.min(val1, val2);
+  
+  // Normalize card order for comparisons (higher card first)
+  const [highRank, lowRank] = val1 > val2 ? [card1Rank, card2Rank] : [card2Rank, card1Rank];
   
   // Premium hands
   if (isPair && val1 >= ranks.indexOf('Q')) return 'premium'; // QQ+
-  if (card1Rank === 'A' && card2Rank === 'K') return 'premium'; // AK
+  if (highRank === 'A' && lowRank === 'K') return 'premium'; // AK
   
   // Strong hands
   if (isPair && val1 >= ranks.indexOf('T')) return 'strong'; // TT-JJ
-  if (card1Rank === 'A' && (card2Rank === 'Q' || card2Rank === 'J')) return 'strong'; // AQ, AJ
-  if (card1Rank === 'K' && card2Rank === 'Q' && suited) return 'strong'; // KQs
+  if (highRank === 'A' && (lowRank === 'Q' || lowRank === 'J')) return 'strong'; // AQ, AJ
+  if (highRank === 'K' && lowRank === 'Q' && suited) return 'strong'; // KQs
   
   // Medium hands
   if (isPair && val1 >= ranks.indexOf('7')) return 'medium'; // 77-99
-  if (card1Rank === 'A' && suited && highCard >= ranks.indexOf('2')) return 'medium'; // Any Axs
-  if (card1Rank === 'K' && suited && val2 >= ranks.indexOf('9')) return 'medium'; // K9s+
+  if (highRank === 'A' && suited && lowCard >= ranks.indexOf('2')) return 'medium'; // Any Axs
+  if (highRank === 'K' && suited && lowCard >= ranks.indexOf('9')) return 'medium'; // K9s+
   
   // Weak hands
   if (suited && Math.abs(val1 - val2) <= 2 && highCard >= ranks.indexOf('8')) return 'weak'; // Suited connectors

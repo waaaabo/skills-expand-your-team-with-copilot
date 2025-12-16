@@ -49,6 +49,7 @@ function App() {
   // Initialize first hand on mount
   useEffect(() => {
     startNewHand();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const startNewHand = () => {
