@@ -2,7 +2,6 @@
  * Controls Component - Action buttons for poker decisions
  */
 
-import React from 'react';
 import type { ActionType } from './gtoData';
 
 interface ControlsProps {
@@ -10,7 +9,7 @@ interface ControlsProps {
   disabled: boolean;
 }
 
-const Controls: React.FC<ControlsProps> = ({ onAction, disabled }) => {
+const Controls = ({ onAction, disabled }: ControlsProps) => {
   const actions: { action: ActionType; label: string; className: string }[] = [
     { action: 'fold', label: '弃牌 (Fold)', className: 'btn-fold' },
     { action: 'call', label: '跟注 (Call)', className: 'btn-call' },

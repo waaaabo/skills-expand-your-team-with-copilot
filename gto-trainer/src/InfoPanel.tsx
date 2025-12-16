@@ -2,7 +2,6 @@
  * InfoPanel Component - Displays game info, GTO strategy, and statistics
  */
 
-import React from 'react';
 import type { StrategyFrequency } from './gtoData';
 import { formatActionName } from './gtoEngine';
 import type { Scenario } from './gameUtils';
@@ -22,7 +21,7 @@ interface InfoPanelProps {
   };
 }
 
-const InfoPanel: React.FC<InfoPanelProps> = ({ scenario, gtoStrategy, feedback, stats }) => {
+const InfoPanel = ({ scenario, gtoStrategy, feedback, stats }: InfoPanelProps) => {
   return (
     <div className="info-panel">
       <div className="info-section">

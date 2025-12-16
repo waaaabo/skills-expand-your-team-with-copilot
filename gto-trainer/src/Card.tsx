@@ -2,7 +2,6 @@
  * Card Component - Displays a single poker card
  */
 
-import React from 'react';
 import type { Card as CardType } from './gameUtils';
 import { getCardColor } from './gameUtils';
 
@@ -10,7 +9,7 @@ interface CardProps {
   card: CardType;
 }
 
-const Card: React.FC<CardProps> = ({ card }) => {
+const Card = ({ card }: CardProps) => {
   const color = getCardColor(card.suit);
   
   return (

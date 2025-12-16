@@ -2,7 +2,6 @@
  * Table Component - Displays the poker table with board and hand cards
  */
 
-import React from 'react';
 import Card from './Card';
 import type { Card as CardType } from './gameUtils';
 
@@ -11,7 +10,7 @@ interface TableProps {
   hand: CardType[];
 }
 
-const Table: React.FC<TableProps> = ({ board, hand }) => {
+const Table = ({ board, hand }: TableProps) => {
   return (
     <div className="table-container">
       <div className="board-section">

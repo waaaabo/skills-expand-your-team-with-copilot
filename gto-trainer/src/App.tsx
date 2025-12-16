@@ -2,12 +2,13 @@
  * Main App Component - GTO Poker Strategy Trainer
  */
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Table from './Table';
 import Controls from './Controls';
 import InfoPanel from './InfoPanel';
 import { generateRandomHand, generateRandomBoard, isSuited, type Card, generateScenario, type Scenario } from './gameUtils';
-import { getGtoStrategy, evaluateAction, type ActionType, type StrategyFrequency } from './gtoEngine';
+import { getGtoStrategy, evaluateAction } from './gtoEngine';
+import { type ActionType, type StrategyFrequency } from './gtoData';
 import './App.css';
 
 interface GameState {
